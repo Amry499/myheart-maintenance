@@ -54,7 +54,7 @@
         /* Header */
         .header {
             position: relative;
-            z-index: 20; /* Higher than overlay */
+            z-index: 20;
             flex-shrink: 0;
             padding: 16px 28px;
             width: 100%;
@@ -92,7 +92,7 @@
             filter: drop-shadow(0 5px 15px rgba(204, 0, 0, 0.3));
         }
         
-        /* Main Content - akan mengambil ruang yang tinggal */
+        /* Main Content */
         .main-content {
             position: relative;
             z-index: 15;
@@ -113,7 +113,7 @@
             padding: 30px 35px;
             max-width: 700px;
             width: 100%;
-            max-height: calc(85vh - 80px); /* Adjusted untuk bagi ruang footer */
+            max-height: calc(85vh - 80px);
             overflow-y: auto;
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -122,7 +122,6 @@
             animation: cardPopIn 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
         }
         
-        /* Custom scrollbar untuk notice card */
         .notice-card::-webkit-scrollbar {
             width: 8px;
         }
@@ -206,7 +205,7 @@
         }
         
         .dates-table::before {
-            content: '⏰';
+            content: '';
             position: absolute;
             top: 10px;
             right: 15px;
@@ -259,7 +258,7 @@
             text-align: right;
         }
         
-        /* Button Container - SIDE BY SIDE */
+        /* Button Container */
         .button-container {
             display: flex;
             gap: 12px;
@@ -377,16 +376,10 @@
             border-radius: 28px;
             border: 2px solid #CC0000;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            
-            /* Layout 2 column */
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            
-            /* SCROLLABLE */
-            max-height: 260px;
+            max-height: 220px; /* Reduced height for fewer items */
             overflow-y: auto;
-            
-            /* Important untuk scroll */
             position: relative;
             z-index: 25;
         }
@@ -396,7 +389,6 @@
             animation: dropdownSlide 0.3s ease;
         }
         
-        /* Custom Scrollbar untuk dropdown */
         .email-options::-webkit-scrollbar {
             width: 8px;
         }
@@ -416,7 +408,6 @@
             background: #8B0000;
         }
         
-        /* Firefox scrollbar */
         .email-options {
             scrollbar-width: thin;
             scrollbar-color: #CC0000 #f1f1f1;
@@ -468,7 +459,7 @@
             background: linear-gradient(135deg, #22205F, #2A2A7A);
             color: white;
             border-color: #CC0000;
-            grid-column: span 2; /* Ambil 2 column */
+            grid-column: span 2;
         }
         
         .email-option.copy-option i {
@@ -480,10 +471,10 @@
             border-color: #FFD700;
         }
         
-        /* Footer - SENTIASA NAMPAK */
+        /* Footer */
         .footer {
             position: relative;
-            z-index: 30; /* Paling tinggi */
+            z-index: 30;
             flex-shrink: 0;
             text-align: center;
             padding: 14px 20px;
@@ -549,115 +540,53 @@
             opacity: 1;
         }
         
-        /* ===================================== */
-        /* RESPONSIVE DESIGN */
-        /* ===================================== */
-        
-        /* Desktop besar (1200px ke atas) */
+        /* Responsive Design */
         @media (min-width: 1200px) {
-            .notice-card {
-                max-width: 750px;
-                padding: 40px 45px;
-            }
-            
+            .notice-card { max-width: 750px; padding: 40px 45px; }
             .notice-title { font-size: 34px; }
             .table-col { font-size: 19px; }
             .contact-btn, .copy-btn { font-size: 19px; padding: 16px 22px; }
-            
-            .email-options {
-                max-height: 280px;
-                padding: 20px;
-            }
+            .email-options { max-height: 240px; }
         }
         
-        /* Desktop sederhana (992px - 1199px) */
         @media (min-width: 992px) and (max-width: 1199px) {
-            .notice-card {
-                max-width: 680px;
-                padding: 35px 38px;
-            }
+            .notice-card { max-width: 680px; padding: 35px 38px; }
         }
         
-        /* Tablet (768px - 991px) */
         @media (min-width: 768px) and (max-width: 991px) {
-            .notice-card {
-                max-width: 600px;
-                padding: 30px 32px;
-            }
-            
+            .notice-card { max-width: 600px; padding: 30px 32px; }
             .notice-title { font-size: 28px; }
             .table-col { font-size: 17px; }
-            
-            .email-options {
-                max-height: 250px;
-            }
+            .email-options { max-height: 210px; }
         }
         
-        /* Mobile besar (576px - 767px) */
         @media (min-width: 576px) and (max-width: 767px) {
             .header { padding: 12px 20px; }
             .logo { width: 150px; }
-            
-            .notice-card {
-                max-width: 520px;
-                padding: 25px 28px;
-            }
-            
+            .notice-card { max-width: 520px; padding: 25px 28px; }
             .notice-title { font-size: 26px; }
             .notice-title span:first-child { font-size: 30px; }
             .notice-content p { font-size: 16px; }
-            
             .table-header, .table-row { padding: 8px 12px; }
             .table-col { font-size: 16px; }
-            
             .button-container { gap: 10px; }
-            .contact-btn, .copy-btn { 
-                font-size: 16px; 
-                padding: 14px 16px;
-            }
-            
-            .email-options {
-                max-height: 240px;
-                padding: 16px;
-                gap: 8px;
-            }
-            
-            .email-option {
-                padding: 10px 12px;
-                font-size: 13px;
-            }
-            
+            .contact-btn, .copy-btn { font-size: 16px; padding: 14px 16px; }
+            .email-options { max-height: 200px; padding: 16px; gap: 8px; }
+            .email-option { padding: 10px 12px; font-size: 13px; }
             .email-option i { font-size: 20px; }
-            
             .footer { padding: 12px 16px; font-size: 14px; }
         }
         
-        /* Mobile kecil (575px ke bawah) */
         @media (max-width: 575px) {
             .header { padding: 10px 16px; }
             .logo { width: 130px; }
-            
             .main-content { padding: 10px; }
-            
-            .notice-card {
-                padding: 22px 18px;
-                border-radius: 36px;
-            }
-            
-            .notice-title { 
-                font-size: 24px; 
-                gap: 6px;
-            }
+            .notice-card { padding: 22px 18px; border-radius: 36px; }
+            .notice-title { font-size: 24px; gap: 6px; }
             .notice-title span:first-child { font-size: 26px; }
             .notice-content p { font-size: 15px; }
-            
-            .dates-table { 
-                padding: 14px 16px;
-                border-left-width: 4px;
-            }
-            
+            .dates-table { padding: 14px 16px; border-left-width: 4px; }
             .dates-table::before { font-size: 40px; }
-            
             .table-header, .table-row { 
                 flex-direction: column;
                 align-items: center;
@@ -665,85 +594,37 @@
                 gap: 4px;
                 padding: 8px;
             }
-            
             .table-col:last-child { text-align: center; }
             .table-col { font-size: 15px; }
-            
-            .button-container { 
-                flex-direction: column; 
-                gap: 8px;
-                margin: 16px 0 5px;
-            }
-            
-            .contact-btn, .copy-btn { 
-                width: 100%;
-                font-size: 15px;
-                padding: 14px;
-            }
-            
-            .email-options {
-                grid-template-columns: 1fr; /* 1 column untuk mobile */
-                max-height: 220px;
-                padding: 14px;
-                gap: 8px;
-            }
-            
-            .email-option.copy-option {
-                grid-column: span 1; /* Full width in mobile */
-            }
-            
-            .email-option {
-                padding: 10px 12px;
-                font-size: 13px;
-            }
-            
-            .footer {
-                padding: 10px 12px;
-                font-size: 13px;
-            }
-            
+            .button-container { flex-direction: column; gap: 8px; margin: 16px 0 5px; }
+            .contact-btn, .copy-btn { width: 100%; font-size: 15px; padding: 14px; }
+            .email-options { grid-template-columns: 1fr; max-height: 180px; padding: 14px; gap: 8px; }
+            .email-option.copy-option { grid-column: span 1; }
+            .email-option { padding: 10px 12px; font-size: 13px; }
+            .footer { padding: 10px 12px; font-size: 13px; }
             .footer-quote { gap: 6px; }
             .footer-quote i { font-size: 12px; }
         }
         
-        /* Small height devices */
         @media (max-height: 700px) {
-            .notice-card { 
-                max-height: calc(80vh - 70px);
-                padding: 20px 25px;
-            }
-            
+            .notice-card { max-height: calc(80vh - 70px); padding: 20px 25px; }
             .notice-title { margin-bottom: 6px; }
             .dates-table { margin: 10px 0; padding: 12px 16px; }
             .button-container { margin: 12px 0 5px; }
-            
-            .email-options {
-                max-height: 200px;
-            }
+            .email-options { max-height: 180px; }
         }
         
-        /* Very small height */
         @media (max-height: 600px) {
-            .notice-card { 
-                max-height: calc(75vh - 60px);
-                padding: 15px 20px;
-            }
-            
+            .notice-card { max-height: calc(75vh - 60px); padding: 15px 20px; }
             .notice-title { font-size: 22px; }
             .table-col { font-size: 14px; }
             .contact-btn, .copy-btn { padding: 10px 14px; }
-            
-            .email-options {
-                max-height: 160px;
-            }
-            
+            .email-options { max-height: 140px; }
             .footer { padding: 8px 12px; }
         }
         
-        /* Safari fixes */
         @supports (-webkit-touch-callout: none) {
-            .notice-card,
-            .email-options {
+            .notice-card, .email-options {
                 -webkit-overflow-scrolling: touch;
             }
         }
@@ -790,7 +671,7 @@
                     </div>
                 </div>
                 
-                <!-- Button Container - SIDE BY SIDE -->
+                <!-- Button Container -->
                 <div class="button-container">
                     <button class="contact-btn" id="emailMainBtn" aria-expanded="false">
                         <i class="fas fa-envelope"></i>
@@ -800,143 +681,263 @@
                     
                     <button class="copy-btn" id="copyBtn">
                         <i class="fas fa-copy"></i>
-                        <span id="copyText">Copy Email</span>
+                        <span id="copyText">Copy</span>
                     </button>
                 </div>
                 
-                <!-- Email Options Dropdown - SCROLLABLE -->
+                <!-- Email Options Dropdown - REMOVED Apple, Spark, Proton -->
                 <div class="email-options" id="emailOptions">
-                    <!-- Baris 1 -->
-                    <a href="#" class="email-option" data-email="gmail"><i class="fab fa-google"></i><span>Gmail</span></a>
-                    <a href="#" class="email-option" data-email="outlook"><i class="fab fa-microsoft"></i><span>Outlook</span></a>
+                    <!-- Gmail -->
+                    <a href="#" class="email-option" data-email="gmail">
+                        <i class="fab fa-google"></i>
+                        <span>Gmail</span>
+                    </a>
                     
-                    <!-- Baris 2 -->
-                    <a href="#" class="email-option" data-email="yahoo"><i class="fab fa-yahoo"></i><span>Yahoo</span></a>
-                    <a href="#" class="email-option" data-email="apple"><i class="fab fa-apple"></i><span>Apple</span></a>
+                    <!-- Outlook -->
+                    <a href="#" class="email-option" data-email="outlook">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Outlook</span>
+                    </a>
                     
-                    <!-- Baris 3 -->
-                    <a href="#" class="email-option" data-email="spark"><i class="fas fa-bolt"></i><span>Spark</span></a>
-                    <a href="#" class="email-option" data-email="proton"><i class="fas fa-shield-alt"></i><span>Proton</span></a>
+                    <!-- Yahoo -->
+                    <a href="#" class="email-option" data-email="yahoo">
+                        <i class="fab fa-yahoo"></i>
+                        <span>Yahoo</span>
+                    </a>
                     
-                    <!-- COPY EMAIL - full width -->
+                    <!-- COPY EMAIL -->
                     <!-- <a href="#" class="email-option copy-option" id="copyEmailOption">
                         <i class="fas fa-copy"></i>
                         <span>copy email</span>
                     </a> -->
                     
-                    <!-- Default -->
-                    <a href="#" class="email-option" data-email="default"><i class="fas fa-envelope"></i><span>Default</span></a>
+                    <!-- Default Mail -->
+                    <a href="#" class="email-option" data-email="default">
+                        <i class="fas fa-envelope"></i>
+                        <span>Default</span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Footer - SENTIASA NAMPAK -->
+    <!-- Footer -->
     <div class="footer">
         <div class="footer-quote">
             <i class="fas fa-quote-left"></i>
             <span>We appreciate your patience as we work to enhance your experience.</span>
             <i class="fas fa-quote-right"></i>
-            <span class="footer-heart">❤️</span>
         </div>
     </div>
 
     <script>
-        (function() {
-            document.addEventListener('DOMContentLoaded', function() {
-                const emailData = { recipient: 'myheart@talentcorp.com.my' };
-                const emailMainBtn = document.getElementById('emailMainBtn');
-                const emailOptions = document.getElementById('emailOptions');
-                const copyBtn = document.getElementById('copyBtn');
-                const copyEmailOption = document.getElementById('copyEmailOption');
-                const copyText = document.getElementById('copyText');
-                const toast = document.getElementById('toast');
-                
-                // Toggle dropdown
-                emailMainBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    emailOptions.classList.toggle('show');
-                    this.setAttribute('aria-expanded', emailOptions.classList.contains('show'));
-                });
-                
-                // Close when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!emailMainBtn.contains(e.target) && !emailOptions.contains(e.target)) {
-                        emailOptions.classList.remove('show');
-                        emailMainBtn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-                
-                // Prevent closing when clicking inside dropdown (for scrolling)
-                emailOptions.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
-                
-                // Copy function
-                function copyEmail() {
-                    navigator.clipboard.writeText(emailData.recipient).then(() => {
-                        copyBtn.classList.add('copied');
-                        copyText.textContent = 'Copied!';
-                        if (copyEmailOption) {
-                            copyEmailOption.style.background = '#28a745';
-                            const span = copyEmailOption.querySelector('span');
-                            if (span) span.textContent = 'copied! ✓';
-                        }
-                        toast.classList.add('show');
-                        
-                        setTimeout(() => {
-                            toast.classList.remove('show');
-                            copyBtn.classList.remove('copied');
-                            copyText.textContent = 'Copy';
-                            if (copyEmailOption) {
-                                copyEmailOption.style.background = 'linear-gradient(135deg, #22205F, #2A2A7A)';
-                                const span = copyEmailOption.querySelector('span');
-                                if (span) span.textContent = 'copy email';
-                            }
-                        }, 2000);
-                    }).catch(() => {
-                        alert('Press Ctrl+C to copy: ' + emailData.recipient);
-                    });
-                }
-                
-                copyBtn.addEventListener('click', (e) => { 
-                    e.preventDefault(); 
-                    e.stopPropagation();
-                    copyEmail(); 
-                });
-                
-                if (copyEmailOption) {
-                    copyEmailOption.addEventListener('click', (e) => { 
-                        e.preventDefault(); 
-                        e.stopPropagation();
-                        copyEmail(); 
-                    });
-                }
-                
-                // Email client links
-                document.querySelectorAll('.email-option[data-email]').forEach(opt => {
-                    opt.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        const client = this.dataset.email;
-                        
-                        const baseUrl = `mailto:myheart@talentcorp.com.my?subject=Maintenance%20Enquiry&body=Hello%2C%0D%0A%0D%0AI%20would%20like%20to%20enquire%20about%20the%20maintenance%20on%2011-12%20March%202026.%0D%0A%0D%0AThank%20you.`;
-                        
-                        const urls = {
-                            gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=myheart@talentcorp.com.my&su=Maintenance%20Enquiry&body=Hello%2C%0D%0A%0D%0AI%20would%20like%20to%20enquire%20about%20the%20maintenance%20on%2011-12%20March%202026.%0D%0A%0D%0AThank%20you.`,
-                            outlook: `https://outlook.live.com/mail/0/deeplink/compose?to=myheart@talentcorp.com.my&subject=Maintenance%20Enquiry&body=Hello%2C%0D%0A%0D%0AI%20would%20like%20to%20enquire%20about%20the%20maintenance%20on%2011-12%20March%202026.%0D%0A%0D%0AThank%20you.`,
-                            yahoo: `https://compose.mail.yahoo.com/?to=myheart@talentcorp.com.my&subject=Maintenance%20Enquiry&body=Hello%2C%0D%0A%0D%0AI%20would%20like%20to%20enquire%20about%20the%20maintenance%20on%2011-12%20March%202026.%0D%0A%0D%0AThank%20you.`
-                        };
-                        
-                        window.open(urls[client] || baseUrl, '_blank');
-                        emailOptions.classList.remove('show');
-                        emailMainBtn.setAttribute('aria-expanded', 'false');
-                    });
-                });
-            });
-        })();
-    </script>
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    const recipient = 'myheart@talentcorp.com.my';
+
+    const emailMainBtn = document.getElementById('emailMainBtn');
+    const emailOptions = document.getElementById('emailOptions');
+    const copyBtn = document.getElementById('copyBtn');
+    const copyEmailOption = document.getElementById('copyEmailOption');
+    const copyText = document.getElementById('copyText');
+    const toast = document.getElementById('toast');
+
+    const emailUrls = {
+      gmail: {
+        app: `googlegmail://co?to=${encodeURIComponent(recipient)}`,
+        web: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}`,
+        fallback: `mailto:${recipient}`
+      },
+      outlook: {
+        app: `ms-outlook://compose?to=${encodeURIComponent(recipient)}`,
+        web: `https://outlook.office.com/mail/deeplink/compose?to=${encodeURIComponent(recipient)}`,
+        fallback: `mailto:${recipient}`
+      },
+      yahoo: {
+        app: `ymail://mail/compose?to=${encodeURIComponent(recipient)}`,
+        web: `https://compose.mail.yahoo.com/?to=${encodeURIComponent(recipient)}`,
+        fallback: `mailto:${recipient}`
+      },
+      default: {
+        app: `mailto:${recipient}`,
+        web: `mailto:${recipient}`,
+        fallback: `mailto:${recipient}`
+      }
+    };
+
+    function isMobile() {
+      return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function openUrl(url, newTab = false) {
+      if (newTab) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = url;
+      }
+    }
+
+    function closeDropdown() {
+      if (emailOptions) {
+        emailOptions.classList.remove('show');
+      }
+      if (emailMainBtn) {
+        emailMainBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function tryOpenAppThenFallback(config) {
+      let pageHidden = false;
+
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          pageHidden = true;
+        }
+      };
+
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+
+      // Try opening native app first
+      window.location.href = config.app;
+
+      setTimeout(() => {
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+
+        // If page became hidden, app likely opened successfully
+        if (pageHidden) return;
+
+        // Fallback to web compose
+        try {
+          openUrl(config.web, true);
+        } catch (error) {
+          openUrl(config.fallback);
+        }
+
+        // Final fallback to mailto
+        setTimeout(() => {
+          if (!document.hidden) {
+            openUrl(config.fallback);
+          }
+        }, 1200);
+      }, 1400);
+    }
+
+    function openEmailClient(client) {
+      const config = emailUrls[client] || emailUrls.default;
+
+      if (!isMobile()) {
+        if (client === 'default') {
+          openUrl(config.fallback);
+        } else {
+          openUrl(config.web, true);
+        }
+        return;
+      }
+
+      if (client === 'default') {
+        openUrl(config.fallback);
+        return;
+      }
+
+      tryOpenAppThenFallback(config);
+    }
+
+    function copyEmail() {
+      navigator.clipboard.writeText(recipient).then(() => {
+        if (copyBtn) {
+          copyBtn.classList.add('copied');
+        }
+
+        if (copyText) {
+          copyText.textContent = 'Copied!';
+        }
+
+        if (copyEmailOption) {
+          copyEmailOption.style.background = '#28a745';
+          const span = copyEmailOption.querySelector('span');
+          if (span) {
+            span.textContent = 'copied! ✓';
+          }
+        }
+
+        if (toast) {
+          toast.classList.add('show');
+        }
+
+        setTimeout(() => {
+          if (toast) {
+            toast.classList.remove('show');
+          }
+
+          if (copyBtn) {
+            copyBtn.classList.remove('copied');
+          }
+
+          if (copyText) {
+            copyText.textContent = 'Copy';
+          }
+
+          if (copyEmailOption) {
+            copyEmailOption.style.background = 'linear-gradient(135deg, #22205F, #2A2A7A)';
+            const span = copyEmailOption.querySelector('span');
+            if (span) {
+              span.textContent = 'copy email';
+            }
+          }
+        }, 2000);
+      }).catch(() => {
+        alert('Press Ctrl+C to copy: ' + recipient);
+      });
+    }
+
+    if (emailMainBtn && emailOptions) {
+      emailMainBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        emailOptions.classList.toggle('show');
+        this.setAttribute('aria-expanded', emailOptions.classList.contains('show'));
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!emailMainBtn.contains(e.target) && !emailOptions.contains(e.target)) {
+          closeDropdown();
+        }
+      });
+
+      emailOptions.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    }
+
+    if (copyEmailOption) {
+      copyEmailOption.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    }
+
+    document.querySelectorAll('.email-option[data-email]').forEach(option => {
+      option.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const client = this.dataset.email;
+        openEmailClient(client);
+        closeDropdown();
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
