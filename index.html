@@ -2,47 +2,36 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Untuk Internet Explorer/Edge -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Platform Maintenance – MyHeart Portal</title>
     <style>
-        /* Reset and Base Styles - Universal untuk semua browser */
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        /* Body styles dengan fallback untuk semua browser */
         body {
-            font-family: 'Roboto', Arial, Helvetica, sans-serif; /* Fallback lengkap */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             height: 100vh;
             width: 100vw;
             overflow: hidden;
             position: relative;
-            display: -webkit-box;      /* Safari, iOS, Android older */
-            display: -ms-flexbox;      /* IE 10 */
-            display: flex;              /* Standard */
-            -webkit-box-orient: vertical;
-            -ms-flex-direction: column;
+            display: flex;
             flex-direction: column;
             
-            /* Background dengan fallback */
-            background-color: #1a1a2e; /* Fallback solid color */
+            /* Background */
+            background-color: #1a1a2e;
             background-image: url('https://myheart.my/wp-content/uploads/2023/03/Background.png');
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
-            
-            /* Untuk browser yang support attachment fixed */
             background-attachment: fixed;
-            
-            /* Fallback untuk browser lama */
-            background: #1a1a2e url('https://myheart.my/wp-content/uploads/2023/03/Background.png') no-repeat center center fixed;
-            background-size: cover;
         }
         
-        /* Overlay dengan cross-browser support */
+        /* Overlay */
         body::before {
             content: '';
             position: absolute;
@@ -50,52 +39,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.3);
             z-index: 1;
-            
-            /* Untuk IE 8-9 (fallback) */
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000);
-            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000)";
         }
         
-        /* Header - cross browser */
+        /* Header */
         .header {
             position: relative;
             z-index: 10;
-            -ms-flex-negative: 0;
-            -webkit-flex-shrink: 0;
             flex-shrink: 0;
-            padding: 12px 30px;
+            padding: 15px 30px;
             width: 100%;
-            
-            /* Background dengan fallback untuk semua browser */
-            background-color: rgba(255, 255, 255, 0.95); /* Untuk modern browsers */
-            background-color: #f2f2f2; /* Fallback untuk IE 8-9 yang tak support rgba */
-            
-            /* Box shadow - cross browser */
-            -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            -moz-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            
-            /* Backdrop filter - hanya untuk browser yang support */
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-            
-            /* Fallback border untuk IE */
-            border-bottom: 1px solid #ccc;
-            
-            /* Untuk browser yang support border dengan alpha */
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .logo-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
             align-items: center;
         }
         
@@ -103,322 +66,228 @@
             width: 180px;
             height: auto;
             display: block;
-            
-            /* Drop shadow - cross browser */
-            -webkit-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-            
-            /* Fallback untuk IE yang tak support filter */
-            *filter: none; /* IE 7 and below */
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
         
         /* Main Content */
         .main-content {
             position: relative;
             z-index: 5;
-            -webkit-box-flex: 1;
-            -ms-flex: 1;
             flex: 1;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
             align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
             justify-content: center;
+            padding: 20px;
+        }
+        
+        /* Notice Card - NATIVE HTML (bukan gambar) */
+        .notice-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px 50px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        /* Icon/Logo kecil */
+        .notice-icon {
+            margin-bottom: 20px;
+        }
+        
+        .notice-icon svg {
+            width: 60px;
+            height: 60px;
+            fill: #CC0000;
+        }
+        
+        /* Headings */
+        .notice-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #CC0000;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #CC0000;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        
+        .notice-subtitle {
+            font-size: 22px;
+            font-weight: 600;
+            color: #22205F;
+            margin-bottom: 25px;
+        }
+        
+        /* Content */
+        .notice-content {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .maintenance-date {
+            background-color: #f8f8f8;
+            border-left: 4px solid #CC0000;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-weight: 500;
+        }
+        
+        .maintenance-date strong {
+            color: #CC0000;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .maintenance-date span {
+            color: #22205F;
+            font-size: 18px;
+        }
+        
+        /* Message */
+        .message {
+            font-size: 18px;
+            color: #555;
+            margin: 25px 0;
+            font-style: italic;
+        }
+        
+        /* Contact */
+        .contact {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .contact a {
+            color: #CC0000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: color 0.3s;
+            display: inline-block;
             padding: 10px 20px;
-            min-height: 0;
+            background-color: rgba(204, 0, 0, 0.1);
+            border-radius: 50px;
         }
         
-        /* Banner Container */
-        .banner-container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
+        .contact a:hover {
+            background-color: #CC0000;
+            color: white;
         }
         
-        /* Banner Image - Optimized untuk semua browser */
-        .notice-banner {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
-            max-height: 80vh;
-            
-            /* Object fit - untuk semua browser modern */
-            -o-object-fit: contain;
-            object-fit: contain;
-            
-            /* Fallback untuk IE yang tak support object-fit */
-            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-                height: auto;
-                width: auto;
-                max-width: 100%;
-                max-height: 80vh;
-            }
-            
-            border-radius: 20px;
-            
-            /* Border radius untuk semua browser */
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
-            
-            /* Box shadow - cross browser */
-            -webkit-box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            
-            -webkit-transition: all 0.3s ease;
-            -moz-transition: all 0.3s ease;
-            -o-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-            
-            /* Fallback untuk IE */
-            border: 1px solid #333;
-        }
-        
-        .notice-banner:hover {
-            -webkit-transform: translateY(-5px);
-            -moz-transform: translateY(-5px);
-            -ms-transform: translateY(-5px);
-            -o-transform: translateY(-5px);
-            transform: translateY(-5px);
-            
-            -webkit-box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            -moz-box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-        }
-        
-        /* Footer - cross browser */
+        /* Footer */
         .footer {
             position: relative;
             z-index: 10;
-            -ms-flex-negative: 0;
-            -webkit-flex-shrink: 0;
             flex-shrink: 0;
             text-align: center;
-            padding: 12px;
-            
-            /* Background dengan fallback */
+            padding: 15px;
             background-color: rgba(0, 0, 0, 0.7);
-            background-color: #333; /* Fallback untuk IE */
-            
             color: #fff;
             font-size: 14px;
-            
-            /* Backdrop filter - optional */
-            -webkit-backdrop-filter: blur(3px);
-            backdrop-filter: blur(3px);
-            
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            border-top: 1px solid #666; /* Fallback */
         }
         
         .footer a {
             color: #ECD5BB;
             text-decoration: none;
             font-weight: 600;
-            -webkit-transition: color 0.3s;
-            -moz-transition: color 0.3s;
-            -o-transition: color 0.3s;
-            transition: color 0.3s;
         }
         
         .footer a:hover {
-            color: #fff;
             text-decoration: underline;
         }
         
-        /* IE 10-11 specific fixes */
-        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-            body {
-                display: block; /* IE better with block */
-                overflow-y: hidden;
-            }
-            
-            .header {
-                position: relative;
-                top: 0;
-                left: 0;
-                width: 100%;
-            }
-            
-            .main-content {
-                height: calc(100vh - 100px);
-                display: block;
-                text-align: center;
-            }
-            
-            .banner-container {
-                display: block;
-                text-align: center;
-                position: relative;
-                top: 50%;
-                -ms-transform: translateY(-50%);
-                transform: translateY(-50%);
-            }
-            
-            .notice-banner {
-                max-height: 70vh;
-            }
-            
-            .footer {
-                position: relative;
-                width: 100%;
-            }
-        }
-        
-        /* Edge specific fixes */
-        @supports (-ms-ime-align: auto) {
-            .notice-banner {
-                object-fit: contain;
-                width: 100%;
-            }
-        }
-        
-        /* Firefox specific fixes */
-        @-moz-document url-prefix() {
-            .notice-banner {
-                object-fit: contain;
-                width: auto;
-                max-width: 100%;
-            }
-        }
-        
-        /* Safari specific fixes */
-        @media not all and (min-resolution:.001dpcm) { 
-            @supports (-webkit-appearance:none) {
-                .notice-banner {
-                    object-fit: contain;
-                    width: 100%;
-                }
-            }
-        }
-        
-        /* Responsive adjustments */
+        /* Responsive */
         @media (max-width: 768px) {
             .header {
-                padding: 10px 20px;
+                padding: 12px 20px;
             }
             
             .logo {
                 width: 150px;
             }
             
-            .notice-banner {
-                max-height: 75vh;
-                border-radius: 16px;
+            .notice-card {
+                padding: 30px 25px;
             }
             
-            .footer {
-                padding: 10px;
-                font-size: 13px;
+            .notice-title {
+                font-size: 24px;
+            }
+            
+            .notice-subtitle {
+                font-size: 20px;
+            }
+            
+            .notice-content {
+                font-size: 16px;
+            }
+            
+            .maintenance-date strong {
+                font-size: 18px;
+            }
+            
+            .maintenance-date span {
+                font-size: 16px;
+            }
+            
+            .contact a {
+                font-size: 16px;
             }
         }
         
         @media (max-width: 480px) {
             .header {
-                padding: 8px 15px;
+                padding: 10px 15px;
             }
             
             .logo {
                 width: 130px;
             }
             
-            .notice-banner {
-                max-height: 70vh;
-                border-radius: 12px;
+            .notice-card {
+                padding: 25px 20px;
             }
             
-            .footer {
-                padding: 8px;
-                font-size: 12px;
+            .notice-title {
+                font-size: 22px;
+            }
+            
+            .notice-subtitle {
+                font-size: 18px;
             }
         }
         
         /* Untuk skrin rendah */
         @media (max-height: 600px) {
-            .header {
-                padding: 5px 15px;
+            .notice-card {
+                padding: 20px;
             }
             
-            .logo {
-                width: 100px;
+            .notice-title {
+                margin-bottom: 10px;
             }
             
-            .notice-banner {
-                max-height: 65vh;
+            .maintenance-date {
+                margin: 15px 0;
+                padding: 10px 15px;
             }
-            
-            .footer {
-                padding: 5px;
-                font-size: 11px;
-            }
-        }
-        
-        /* Skrin besar */
-        @media (min-width: 1400px) {
-            .notice-banner {
-                max-height: 85vh;
-            }
-            
-            .banner-container {
-                max-width: 1300px;
-            }
-        }
-        
-        /* Print styles - kalau orang print */
-        @media print {
-            body {
-                background: white;
-                height: auto;
-                overflow: visible;
-            }
-            
-            .header, .footer, body::before {
-                display: none;
-            }
-            
-            .notice-banner {
-                max-height: none;
-                box-shadow: none;
-                border: 1px solid #000;
-            }
-        }
-        
-        /* JavaScript disabled fallback */
-        .no-js .notice-banner {
-            border: 2px solid #fff;
         }
     </style>
-    
-    <!-- Modernizr-style detection untuk fallback -->
-    <script>
-        // Simple feature detection untuk object-fit
-        (function() {
-            var docElement = document.documentElement;
-            docElement.className = docElement.className.replace(/(?:^|\s)no-js(?!\S)/g, '') + ' js';
-            
-            // Test for object-fit support
-            if ('objectFit' in document.documentElement.style === false) {
-                docElement.className += ' no-objectfit';
-            }
-        })();
-    </script>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header dengan logo (optional - boleh remove kalau nak) -->
     <div class="header">
         <div class="logo-container">
             <img src="https://myheart.my/wp-content/uploads/2023/02/MYHeart-BI.png" 
@@ -427,12 +296,45 @@
         </div>
     </div>
     
-    <!-- Main Content -->
+    <!-- Main Content - Native HTML Notice -->
     <div class="main-content">
-        <div class="banner-container">
-            <img src="notice_banner.png" 
-                 alt="Platform Maintenance Notice: MyHeart Platform will be temporarily unavailable on 11–12 March 2026 from 8:00 PM to 1:00 AM (MYT)" 
-                 class="notice-banner">
+        <div class="notice-card">
+            
+            <!-- Icon -->
+            <div class="notice-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+            </div>
+            
+            <!-- Title -->
+            <h1 class="notice-title">IMPORTANT NOTICE</h1>
+            
+            <!-- Subtitle -->
+            <h2 class="notice-subtitle">Platform Maintenance Notice</h2>
+            
+            <!-- Content -->
+            <div class="notice-content">
+                <p>The MyHeart Platform will be <strong>temporarily unavailable</strong> due to scheduled maintenance.</p>
+                
+                <!-- Date Box -->
+                <div class="maintenance-date">
+                    <strong>11–12 March 2026</strong>
+                    <span>8:00 PM to 1:00 AM (MYT)</span>
+                </div>
+                
+                <!-- Message -->
+                <p class="message">
+                    "We appreciate your patience as we work to enhance your experience on the platform."
+                </p>
+                
+                <!-- Contact -->
+                <div class="contact">
+                    <a href="mailto:myheart@talentcorp.com.my">
+                        📧 myheart@talentcorp.com.my
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -440,13 +342,5 @@
     <div class="footer">
         For further enquiries, please contact <a href="mailto:myheart@talentcorp.com.my">myheart@talentcorp.com.my</a>
     </div>
-    
-    <!-- Optional: Polyfill untuk object-fit dalam IE (hanya jika perlu) -->
-    <!--[if IE]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js"></script>
-        <script>
-            objectFitImages('.notice-banner');
-        </script>
-    <![endif]-->
 </body>
 </html>
