@@ -1,0 +1,211 @@
+<!doctype html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Platform Maintenance – MyHeart Portal</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            background-image: url('https://myheart.my/wp-content/uploads/2023/03/Background.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header dengan background putih separa telus - lebih kecil */
+        .header {
+            flex-shrink: 0;
+            padding: 12px 30px; /* Kurangkan padding */
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 180px; /* Kecilkan logo sikit */
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Main Content - untuk banner */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px; /* Kurangkan padding */
+            min-height: 0;
+        }
+        
+        /* Banner Container */
+        .banner-container {
+            width: 100%;
+            max-width: 1100px; /* Besarkan max-width */
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Banner Image - DIBESARKAN */
+        .notice-banner {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            max-height: 80vh; /* Tingkatkan dari 70vh ke 80vh */
+            object-fit: contain;
+            border-radius: 20px; /* Besarkan sedikit radius */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); /* Bayangan lebih tebal */
+            transition: all 0.3s ease;
+        }
+        
+        /* Footer - lebih kecil */
+        .footer {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 12px; /* Kurangkan padding */
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 14px; /* Kecilkan font sikit */
+            backdrop-filter: blur(3px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer a {
+            color: #ECD5BB;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 20px;
+            }
+            
+            .logo {
+                width: 150px;
+            }
+            
+            .notice-banner {
+                max-height: 75vh; /* Dibesarkan */
+                border-radius: 16px;
+            }
+            
+            .footer {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 8px 15px;
+            }
+            
+            .logo {
+                width: 130px;
+            }
+            
+            .notice-banner {
+                max-height: 70vh; /* Dibesarkan */
+                border-radius: 12px;
+            }
+            
+            .footer {
+                padding: 8px;
+                font-size: 12px;
+            }
+        }
+        
+        /* Untuk skrin yang sangat rendah (landscape mobile) */
+        @media (max-height: 600px) {
+            .header {
+                padding: 5px 15px;
+            }
+            
+            .logo {
+                width: 100px;
+            }
+            
+            .notice-banner {
+                max-height: 65vh; /* Dibesarkan sikit */
+            }
+            
+            .footer {
+                padding: 5px;
+                font-size: 11px;
+            }
+        }
+        
+        /* Untuk skrin besar */
+        @media (min-width: 1400px) {
+            .notice-banner {
+                max-height: 85vh; /* Lebih besar untuk skrin besar */
+            }
+            
+            .banner-container {
+                max-width: 1300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header dengan logo -->
+    <div class="header">
+        <div class="logo-container">
+            <img src="https://myheart.my/wp-content/uploads/2023/02/MYHeart-BI.png" 
+                 alt="MyHeart Logo" 
+                 class="logo">
+        </div>
+    </div>
+    
+    <!-- Main Content - Banner BESAR di tengah -->
+    <div class="main-content">
+        <div class="banner-container">
+            <!-- 
+                NOTA: Gantikan src di bawah dengan path sebenar ke fail notice_banner.png
+            -->
+            <img src="notice_banner.png" 
+                 alt="Platform Maintenance Notice" 
+                 class="notice-banner">
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        For further enquiries, please contact <a href="mailto:myheart@talentcorp.com.my">myheart@talentcorp.com.my</a>
+    </div>
+</body>
+</html>
