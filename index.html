@@ -2,110 +2,308 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Untuk Internet Explorer/Edge -->
     <title>Platform Maintenance – MyHeart Portal</title>
     <style>
-        /* Reset and Base Styles */
+        /* Reset and Base Styles - Universal untuk semua browser */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        /* Body styles dengan fallback untuk semua browser */
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Roboto', Arial, Helvetica, sans-serif; /* Fallback lengkap */
             height: 100vh;
+            width: 100vw;
             overflow: hidden;
-            background-color: #f5f5f5;
+            position: relative;
+            display: -webkit-box;      /* Safari, iOS, Android older */
+            display: -ms-flexbox;      /* IE 10 */
+            display: flex;              /* Standard */
+            -webkit-box-orient: vertical;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            
+            /* Background dengan fallback */
+            background-color: #1a1a2e; /* Fallback solid color */
             background-image: url('https://myheart.my/wp-content/uploads/2023/03/Background.png');
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
+            
+            /* Untuk browser yang support attachment fixed */
             background-attachment: fixed;
-            position: relative;
-            display: flex;
-            flex-direction: column;
+            
+            /* Fallback untuk browser lama */
+            background: #1a1a2e url('https://myheart.my/wp-content/uploads/2023/03/Background.png') no-repeat center center fixed;
+            background-size: cover;
         }
         
-        /* Header dengan background putih separa telus - lebih kecil */
+        /* Overlay dengan cross-browser support */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            
+            /* Untuk IE 8-9 (fallback) */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000)";
+        }
+        
+        /* Header - cross browser */
         .header {
+            position: relative;
+            z-index: 10;
+            -ms-flex-negative: 0;
+            -webkit-flex-shrink: 0;
             flex-shrink: 0;
-            padding: 12px 30px; /* Kurangkan padding */
+            padding: 12px 30px;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
+            
+            /* Background dengan fallback untuk semua browser */
+            background-color: rgba(255, 255, 255, 0.95); /* Untuk modern browsers */
+            background-color: #f2f2f2; /* Fallback untuk IE 8-9 yang tak support rgba */
+            
+            /* Box shadow - cross browser */
+            -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            
+            /* Backdrop filter - hanya untuk browser yang support */
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
+            
+            /* Fallback border untuk IE */
+            border-bottom: 1px solid #ccc;
+            
+            /* Untuk browser yang support border dengan alpha */
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .logo-container {
             max-width: 1200px;
             margin: 0 auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
         }
         
         .logo {
-            width: 180px; /* Kecilkan logo sikit */
+            width: 180px;
             height: auto;
             display: block;
+            
+            /* Drop shadow - cross browser */
+            -webkit-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            
+            /* Fallback untuk IE yang tak support filter */
+            *filter: none; /* IE 7 and below */
         }
         
-        /* Main Content - untuk banner */
+        /* Main Content */
         .main-content {
+            position: relative;
+            z-index: 5;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
             flex: 1;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
             justify-content: center;
-            padding: 10px 20px; /* Kurangkan padding */
+            padding: 10px 20px;
             min-height: 0;
         }
         
         /* Banner Container */
         .banner-container {
             width: 100%;
-            max-width: 1100px; /* Besarkan max-width */
+            max-width: 1100px;
             margin: 0 auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
             justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
         }
         
-        /* Banner Image - DIBESARKAN */
+        /* Banner Image - Optimized untuk semua browser */
         .notice-banner {
             width: 100%;
             height: auto;
             max-width: 100%;
-            max-height: 80vh; /* Tingkatkan dari 70vh ke 80vh */
+            max-height: 80vh;
+            
+            /* Object fit - untuk semua browser modern */
+            -o-object-fit: contain;
             object-fit: contain;
-            border-radius: 20px; /* Besarkan sedikit radius */
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); /* Bayangan lebih tebal */
+            
+            /* Fallback untuk IE yang tak support object-fit */
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                height: auto;
+                width: auto;
+                max-width: 100%;
+                max-height: 80vh;
+            }
+            
+            border-radius: 20px;
+            
+            /* Border radius untuk semua browser */
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            
+            /* Box shadow - cross browser */
+            -webkit-box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             transition: all 0.3s ease;
+            
+            /* Fallback untuk IE */
+            border: 1px solid #333;
         }
         
-        /* Footer - lebih kecil */
+        .notice-banner:hover {
+            -webkit-transform: translateY(-5px);
+            -moz-transform: translateY(-5px);
+            -ms-transform: translateY(-5px);
+            -o-transform: translateY(-5px);
+            transform: translateY(-5px);
+            
+            -webkit-box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            -moz-box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+        
+        /* Footer - cross browser */
         .footer {
+            position: relative;
+            z-index: 10;
+            -ms-flex-negative: 0;
+            -webkit-flex-shrink: 0;
             flex-shrink: 0;
             text-align: center;
-            padding: 12px; /* Kurangkan padding */
-            background-color: rgba(0, 0, 0, 0.6);
+            padding: 12px;
+            
+            /* Background dengan fallback */
+            background-color: rgba(0, 0, 0, 0.7);
+            background-color: #333; /* Fallback untuk IE */
+            
             color: #fff;
-            font-size: 14px; /* Kecilkan font sikit */
+            font-size: 14px;
+            
+            /* Backdrop filter - optional */
+            -webkit-backdrop-filter: blur(3px);
             backdrop-filter: blur(3px);
+            
             border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid #666; /* Fallback */
         }
         
         .footer a {
             color: #ECD5BB;
             text-decoration: none;
             font-weight: 600;
+            -webkit-transition: color 0.3s;
+            -moz-transition: color 0.3s;
+            -o-transition: color 0.3s;
             transition: color 0.3s;
         }
         
         .footer a:hover {
             color: #fff;
             text-decoration: underline;
+        }
+        
+        /* IE 10-11 specific fixes */
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            body {
+                display: block; /* IE better with block */
+                overflow-y: hidden;
+            }
+            
+            .header {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+            
+            .main-content {
+                height: calc(100vh - 100px);
+                display: block;
+                text-align: center;
+            }
+            
+            .banner-container {
+                display: block;
+                text-align: center;
+                position: relative;
+                top: 50%;
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+            
+            .notice-banner {
+                max-height: 70vh;
+            }
+            
+            .footer {
+                position: relative;
+                width: 100%;
+            }
+        }
+        
+        /* Edge specific fixes */
+        @supports (-ms-ime-align: auto) {
+            .notice-banner {
+                object-fit: contain;
+                width: 100%;
+            }
+        }
+        
+        /* Firefox specific fixes */
+        @-moz-document url-prefix() {
+            .notice-banner {
+                object-fit: contain;
+                width: auto;
+                max-width: 100%;
+            }
+        }
+        
+        /* Safari specific fixes */
+        @media not all and (min-resolution:.001dpcm) { 
+            @supports (-webkit-appearance:none) {
+                .notice-banner {
+                    object-fit: contain;
+                    width: 100%;
+                }
+            }
         }
         
         /* Responsive adjustments */
@@ -119,7 +317,7 @@
             }
             
             .notice-banner {
-                max-height: 75vh; /* Dibesarkan */
+                max-height: 75vh;
                 border-radius: 16px;
             }
             
@@ -139,7 +337,7 @@
             }
             
             .notice-banner {
-                max-height: 70vh; /* Dibesarkan */
+                max-height: 70vh;
                 border-radius: 12px;
             }
             
@@ -149,7 +347,7 @@
             }
         }
         
-        /* Untuk skrin yang sangat rendah (landscape mobile) */
+        /* Untuk skrin rendah */
         @media (max-height: 600px) {
             .header {
                 padding: 5px 15px;
@@ -160,7 +358,7 @@
             }
             
             .notice-banner {
-                max-height: 65vh; /* Dibesarkan sikit */
+                max-height: 65vh;
             }
             
             .footer {
@@ -169,20 +367,58 @@
             }
         }
         
-        /* Untuk skrin besar */
+        /* Skrin besar */
         @media (min-width: 1400px) {
             .notice-banner {
-                max-height: 85vh; /* Lebih besar untuk skrin besar */
+                max-height: 85vh;
             }
             
             .banner-container {
                 max-width: 1300px;
             }
         }
+        
+        /* Print styles - kalau orang print */
+        @media print {
+            body {
+                background: white;
+                height: auto;
+                overflow: visible;
+            }
+            
+            .header, .footer, body::before {
+                display: none;
+            }
+            
+            .notice-banner {
+                max-height: none;
+                box-shadow: none;
+                border: 1px solid #000;
+            }
+        }
+        
+        /* JavaScript disabled fallback */
+        .no-js .notice-banner {
+            border: 2px solid #fff;
+        }
     </style>
+    
+    <!-- Modernizr-style detection untuk fallback -->
+    <script>
+        // Simple feature detection untuk object-fit
+        (function() {
+            var docElement = document.documentElement;
+            docElement.className = docElement.className.replace(/(?:^|\s)no-js(?!\S)/g, '') + ' js';
+            
+            // Test for object-fit support
+            if ('objectFit' in document.documentElement.style === false) {
+                docElement.className += ' no-objectfit';
+            }
+        })();
+    </script>
 </head>
 <body>
-    <!-- Header dengan logo -->
+    <!-- Header -->
     <div class="header">
         <div class="logo-container">
             <img src="https://myheart.my/wp-content/uploads/2023/02/MYHeart-BI.png" 
@@ -191,14 +427,11 @@
         </div>
     </div>
     
-    <!-- Main Content - Banner BESAR di tengah -->
+    <!-- Main Content -->
     <div class="main-content">
         <div class="banner-container">
-            <!-- 
-                NOTA: Gantikan src di bawah dengan path sebenar ke fail notice_banner.png
-            -->
             <img src="notice_banner.png" 
-                 alt="Platform Maintenance Notice" 
+                 alt="Platform Maintenance Notice: MyHeart Platform will be temporarily unavailable on 11–12 March 2026 from 8:00 PM to 1:00 AM (MYT)" 
                  class="notice-banner">
         </div>
     </div>
@@ -207,5 +440,13 @@
     <div class="footer">
         For further enquiries, please contact <a href="mailto:myheart@talentcorp.com.my">myheart@talentcorp.com.my</a>
     </div>
+    
+    <!-- Optional: Polyfill untuk object-fit dalam IE (hanya jika perlu) -->
+    <!--[if IE]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js"></script>
+        <script>
+            objectFitImages('.notice-banner');
+        </script>
+    <![endif]-->
 </body>
 </html>
