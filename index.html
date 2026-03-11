@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="https://myheart.my/wp-content/uploads/2023/03/cropped-favicon-png-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://myheart.my/wp-content/uploads/2023/03/cropped-favicon-png-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://myheart.my/wp-content/uploads/2023/03/cropped-favicon-png-180x180.png" />
+<meta name="msapplication-TileImage" content="https://myheart.my/wp-content/uploads/2023/03/cropped-favicon-png-270x270.png" />
     <title>Platform Maintenance – MyHeart Portal</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -459,7 +463,7 @@
             background: linear-gradient(135deg, #22205F, #2A2A7A);
             color: white;
             border-color: #CC0000;
-            grid-column: span 2;
+            grid-column: span 1;
         }
         
         .email-option.copy-option i {
@@ -648,7 +652,7 @@
             
             <!-- Title -->
             <h1 class="notice-title">
-                <span>⚠️</span> IMPORTANT NOTICE
+                <span>⚠️</span> Platform Maintenance Notice
             </h1>
             
             <!-- Content -->
@@ -663,11 +667,11 @@
                     </div> -->
                     <div class="table-row">
                         <div class="table-col">11 March 2026</div>
-                        <div class="table-col">8.00pm – 1.00am</div>
+                        <div class="table-col">8.00pm – 1.00am <b>(MYT)</b></div>
                     </div>
                     <div class="table-row">
                         <div class="table-col">12 March 2026</div>
-                        <div class="table-col">8.00pm – 1.00am</div>
+                        <div class="table-col">8.00pm – 1.00am <b>(MYT)</b></div>
                     </div>
                 </div>
                 
@@ -708,7 +712,7 @@
                     <!-- COPY EMAIL -->
                     <!-- <a href="#" class="email-option copy-option" id="copyEmailOption">
                         <i class="fas fa-copy"></i>
-                        <span>copy email</span>
+                        <span>Copy Email</span>
                     </a> -->
                     
                     <!-- Default Mail -->
@@ -797,26 +801,26 @@
 
       document.addEventListener('visibilitychange', handleVisibilityChange);
 
-      // Try opening native app first
+      // Try native app first
       window.location.href = config.app;
 
       setTimeout(() => {
         document.removeEventListener('visibilitychange', handleVisibilityChange);
 
-        // If page became hidden, app likely opened successfully
+        // If app likely opened successfully, stop here
         if (pageHidden) return;
 
-        // Fallback to web compose
+        // Fallback to web compose in new tab
         try {
           openUrl(config.web, true);
         } catch (error) {
-          openUrl(config.fallback);
+          window.location.href = config.fallback;
         }
 
         // Final fallback to mailto
         setTimeout(() => {
           if (!document.hidden) {
-            openUrl(config.fallback);
+            window.location.href = config.fallback;
           }
         }, 1200);
       }, 1400);
@@ -825,20 +829,24 @@
     function openEmailClient(client) {
       const config = emailUrls[client] || emailUrls.default;
 
+      // Desktop behavior
       if (!isMobile()) {
         if (client === 'default') {
-          openUrl(config.fallback);
-        } else {
-          openUrl(config.web, true);
+          window.location.href = config.fallback;
+          return;
         }
+
+        openUrl(config.web, true);
         return;
       }
 
+      // Mobile default mail app
       if (client === 'default') {
-        openUrl(config.fallback);
+        window.location.href = config.fallback;
         return;
       }
 
+      // Mobile app deep link flow
       tryOpenAppThenFallback(config);
     }
 
