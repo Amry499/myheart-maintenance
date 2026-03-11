@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="https://myheart.my/wp-content/uploads/2023/03/cropped-favicon-png-32x32.png" sizes="32x32" />
 <link rel="icon" href="https://myheart.my/wp-content/uploads/2023/03/cropped-favicon-png-192x192.png" sizes="192x192" />
@@ -479,6 +479,7 @@
         }
         
         /* Footer */
+        /* Footer */
         .footer { 
             padding: 10px 12px; 
             font-size: 13px;
@@ -495,6 +496,8 @@
             border-image: linear-gradient(90deg, #CC0000, #22205F, #FFD700) 1;
             border-top-style: solid;
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+            /* Safe area for mobile browsers */
+            padding-bottom: max(10px, env(safe-area-inset-bottom, 15px));
         }
 
         .footer-quote { 
@@ -689,9 +692,11 @@
             }
             
             .footer { 
-                padding: 10px 12px; 
+                padding: 10px 12px;
+                padding-bottom: max(10px, env(safe-area-inset-bottom, 20px)); /* Extra space for browser UI */
                 font-size: 13px;
                 flex-shrink: 0;
+                width: 100%;
             }
             
             .footer-quote { 
@@ -744,22 +749,8 @@
                 -webkit-overflow-scrolling: touch;
             }
         }
-        /* Additional fix for mobile logo centering */
-        @media (max-width: 575px) {
-            .logo-container {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                margin: 0 auto !important;
-                width: 100% !important;
-                text-align: center !important;
-            }   
-    
-            .logo {
-            margin: 0 auto !important;
-            display: block !important;
-            }
-        }
+       
+        
     </style>
 </head>
 <body>
@@ -852,7 +843,9 @@
             </div>
         </div>
     </div>
-    
+     <!-- Spacer for mobile browsers - BETUL letak sebelum footer -->
+    <div class="mobile-spacer" style="height: 15px; flex-shrink: 0; display: block;"></div>
+
     <!-- Footer -->
     <div class="footer">
         <div class="footer-quote">
