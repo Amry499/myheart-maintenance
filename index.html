@@ -81,6 +81,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            text-align: center;
         }
         
         .logo {
@@ -610,6 +612,15 @@
             .footer-quote i { font-size: 12px; }
         }
         
+        @media (max-width: 575px) {
+            .logo-container {
+                justify-content: center; /* Center logo on mobile */
+            }
+            .logo {
+                width: 140px; /* Slightly larger on mobile for better visibility */
+            }
+        }
+        
         @media (max-height: 700px) {
             .notice-card { max-height: calc(80vh - 70px); padding: 20px 25px; }
             .notice-title { margin-bottom: 6px; }
@@ -630,6 +641,22 @@
         @supports (-webkit-touch-callout: none) {
             .notice-card, .email-options {
                 -webkit-overflow-scrolling: touch;
+            }
+        }
+        /* Additional fix for mobile logo centering */
+        @media (max-width: 575px) {
+            .logo-container {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                margin: 0 auto !important;
+                width: 100% !important;
+                text-align: center !important;
+            }   
+    
+            .logo {
+            margin: 0 auto !important;
+            display: block !important;
             }
         }
     </style>
