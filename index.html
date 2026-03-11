@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="https://myheart.my/wp-content/uploads/2023/03/cropped-favicon-png-32x32.png" sizes="32x32" />
 <link rel="icon" href="https://myheart.my/wp-content/uploads/2023/03/cropped-favicon-png-192x192.png" sizes="192x192" />
@@ -479,47 +479,42 @@
         }
         
         /* Footer */
-        /* Footer */
-        .footer { 
-            padding: 10px 12px; 
-            font-size: 13px;
-            flex-shrink: 0;
-            width: 100%;
+        .footer {
             position: relative;
             z-index: 30;
+            flex-shrink: 0;
             text-align: center;
+            padding: 14px 20px;
             background: linear-gradient(135deg, rgba(10, 10, 30, 0.98), rgba(20, 20, 50, 0.98));
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: white;
+            font-size: 15px;
             border-top: 2px solid;
             border-image: linear-gradient(90deg, #CC0000, #22205F, #FFD700) 1;
             border-top-style: solid;
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
-            /* Safe area for mobile browsers */
-            padding-bottom: max(10px, env(safe-area-inset-bottom, 15px));
-        }
-
-        .footer-quote { 
-            gap: 6px;
-            text-align: center;
-            justify-content: center;
             width: 100%;
+        }
+        
+        .footer-quote {
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 12px;
             flex-wrap: wrap;
             max-width: 800px;
             margin: 0 auto;
         }
-
-        .footer-quote i { 
-            font-size: 12px;
+        
+        .footer-quote i {
             color: #FFD700;
+            font-size: 14px;
         }
-
-       .footer-quote span {
-            text-align: center !important;
-            word-break: keep-all;
+        
+        .footer-heart {
+            animation: heartbeat 1.5s ease infinite;
+            display: inline-block;
         }
         
         @keyframes heartbeat {
@@ -590,63 +585,15 @@
         }
         
         @media (max-width: 575px) {
-            body {
-                height: auto;
-                min-height: 100vh;
-                overflow-y: auto;
-                overflow-x: hidden;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .header { 
-                padding: 10px 16px;
-                flex-shrink: 0;
-            }
-            
-            .logo { 
-                width: 130px; 
-            }
-            
-            .main-content { 
-                padding: 10px;
-                flex: 1 1 auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .notice-card { 
-                padding: 22px 18px; 
-                border-radius: 36px;
-                margin: 10px 0;
-                max-height: none;
-                height: auto;
-                width: 100%;
-            }
-            
-            .notice-title { 
-                font-size: 24px; 
-                gap: 6px; 
-            }
-            
-            .notice-title span:first-child { 
-                font-size: 26px; 
-            }
-            
-            .notice-content p { 
-                font-size: 15px; 
-            }
-            
-            .dates-table { 
-                padding: 14px 16px; 
-                border-left-width: 4px; 
-            }
-            
-            .dates-table::before { 
-                font-size: 40px; 
-            }
-            
+            .header { padding: 10px 16px; }
+            .logo { width: 130px; }
+            .main-content { padding: 10px; }
+            .notice-card { padding: 22px 18px; border-radius: 36px; }
+            .notice-title { font-size: 24px; gap: 6px; }
+            .notice-title span:first-child { font-size: 26px; }
+            .notice-content p { font-size: 15px; }
+            .dates-table { padding: 14px 16px; border-left-width: 4px; }
+            .dates-table::before { font-size: 40px; }
             .table-header, .table-row { 
                 flex-direction: column;
                 align-items: center;
@@ -654,76 +601,16 @@
                 gap: 4px;
                 padding: 8px;
             }
-            
-            .table-col:last-child { 
-                text-align: center; 
-            }
-            
-            .table-col { 
-                font-size: 15px; 
-            }
-            
-            .button-container { 
-                flex-direction: column; 
-                gap: 8px; 
-                margin: 16px 0 5px; 
-            }
-            
-            .contact-btn, .copy-btn { 
-                width: 100%; 
-                font-size: 15px; 
-                padding: 14px; 
-            }
-            
-            .email-options { 
-                grid-template-columns: 1fr; 
-                max-height: 180px; 
-                padding: 14px; 
-                gap: 8px; 
-            }
-            
-            .email-option.copy-option { 
-                grid-column: span 1; 
-            }
-            
-            .email-option { 
-                padding: 10px 12px; 
-                font-size: 13px; 
-            }
-            
-            .footer { 
-                padding: 10px 12px;
-                padding-bottom: max(10px, env(safe-area-inset-bottom, 20px)); /* Extra space for browser UI */
-                font-size: 13px;
-                flex-shrink: 0;
-                width: 100%;
-            }
-            
-            .footer-quote { 
-                gap: 6px;
-                text-align: center;
-                justify-content: center;
-                width: 100%;
-            }
-            
-            .footer-quote i { 
-                font-size: 12px; 
-            }
-            
-            /* Logo centering */
-            .logo-container {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                margin: 0 auto !important;
-                width: 100% !important;
-                text-align: center !important;
-            }   
-
-            .logo {
-                margin: 0 auto !important;
-                display: block !important;
-            }
+            .table-col:last-child { text-align: center; }
+            .table-col { font-size: 15px; }
+            .button-container { flex-direction: column; gap: 8px; margin: 16px 0 5px; }
+            .contact-btn, .copy-btn { width: 100%; font-size: 15px; padding: 14px; }
+            .email-options { grid-template-columns: 1fr; max-height: 180px; padding: 14px; gap: 8px; }
+            .email-option.copy-option { grid-column: span 1; }
+            .email-option { padding: 10px 12px; font-size: 13px; }
+            .footer { padding: 10px 12px; font-size: 13px; }
+            .footer-quote { gap: 6px; }
+            .footer-quote i { font-size: 12px; }
         }
         
         
@@ -749,8 +636,22 @@
                 -webkit-overflow-scrolling: touch;
             }
         }
-       
-        
+        /* Additional fix for mobile logo centering */
+        @media (max-width: 575px) {
+            .logo-container {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                margin: 0 auto !important;
+                width: 100% !important;
+                text-align: center !important;
+            }   
+    
+            .logo {
+            margin: 0 auto !important;
+            display: block !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -843,9 +744,7 @@
             </div>
         </div>
     </div>
-     <!-- Spacer for mobile browsers - BETUL letak sebelum footer -->
-    <div class="mobile-spacer" style="height: 15px; flex-shrink: 0; display: block;"></div>
-
+    
     <!-- Footer -->
     <div class="footer">
         <div class="footer-quote">
